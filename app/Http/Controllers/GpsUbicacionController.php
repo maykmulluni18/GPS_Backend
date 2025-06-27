@@ -16,11 +16,11 @@ class GpsUbicacionController extends Controller
      */
     public function index()
     {
-        // Puedes guardar en la base de datos aquí también
-
+        $data = DB::table('gps_ubicacions')->get();
         return response()->json([
             'status' => 'ok',
-            'message' => 'hola desde Laravel.'
+            'message' => 'hola desde Laravel.',
+            'data' => $data
         ]);
     }
     public function store(Request $request)
@@ -70,17 +70,17 @@ class GpsUbicacionController extends Controller
             ]);
 
             // Registrar en log
-            Log::info('GPS registrado', [
-                'bus_id' => $idBus->id,
-                'placa' => $request->placa,
-                'latitud' => $request->latitud,
-                'longitud' => $request->longitud,
-                'velocidad_kmh' => $request->velocidad_kmh,
-                'fecha' => $fecha,
-                'hora' => $hora,
-                'bus_id' => $request->bus_id,
-                'ip' => $request->ip(),
-            ]);
+            // Log::info('GPS registrado', [
+            //     'bus_id' => $idBus->id,
+            //     'placa' => $request->placa,
+            //     'latitud' => $request->latitud,
+            //     'longitud' => $request->longitud,
+            //     'velocidad_kmh' => $request->velocidad_kmh,
+            //     'fecha' => $fecha,
+            //     'hora' => $hora,
+            //     'bus_id' => $request->bus_id,
+            //     'ip' => $request->ip(),
+            // ]);
 
             return response()->json(['success' => true]);
         } catch (\Exception $e) {
