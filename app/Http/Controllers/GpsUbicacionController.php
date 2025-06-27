@@ -71,6 +71,8 @@ class GpsUbicacionController extends Controller
 
             // Registrar en log
             Log::info('GPS registrado', [
+                'bus_id' => $idBus->id,
+                'placa' => $request->placa,
                 'latitud' => $request->latitud,
                 'longitud' => $request->longitud,
                 'velocidad_kmh' => $request->velocidad_kmh,
